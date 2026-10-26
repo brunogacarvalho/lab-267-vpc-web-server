@@ -1,4 +1,4 @@
-# Lab 267 - Create your VPC and Launch a Web Server
+# 2 - Lab 267 - Create your VPC and Launch a Web Server
 
 ## Objetivo
 
