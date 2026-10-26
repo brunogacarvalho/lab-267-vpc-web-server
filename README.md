@@ -76,3 +76,5 @@ A aplicação web foi aberta com sucesso no navegador usando o DNS público da i
 - Amazon Linux 2023
 - Apache HTTP Server
 - GitHub Pages
+
+Página: https://brunogacarvalho.github.io/lab-267-vpc-web-server/
