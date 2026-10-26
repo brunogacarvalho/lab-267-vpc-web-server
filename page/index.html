@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentação prática do Lab 267 da AWS: criação de uma VPC e configuração de um servidor web com EC2.">
+  <title>Lab 267 | AWS Cloud Foundations</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow">AWS CLOUD FOUNDATIONS</span>
+      <h1>Construindo uma rede na AWS</h1>
+      <p class="hero-description">
+        Documentação prática do laboratório de criação de uma VPC
+        e configuração de um servidor web na nuvem.
+      </p>
+
+      <div class="tags">
+        <span>Lab 267</span>
+        <span>Amazon VPC</span>
+        <span>Amazon EC2</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-number">01</span>
+        <div>
+          <h2>Sobre o laboratório</h2>
+          <p>Objetivo e atividades realizadas</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p>
+          O objetivo deste laboratório foi criar uma rede virtual na AWS,
+          configurar sub-redes públicas e privadas e disponibilizar uma
+          aplicação web por meio de uma instância Amazon EC2.
+        </p>
+        <p>
+          Durante a atividade, foram configurados componentes de rede,
+          regras de acesso e um script de inicialização para preparar
+          o servidor web automaticamente.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-number">02</span>
+        <div>
+          <h2>Recursos utilizados</h2>
+          <p>Principais componentes do laboratório</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <span class="card-icon">01</span>
+          <h3>Amazon VPC</h3>
+          <p>
+            Rede virtual isolada que reúne os recursos e define
+            o espaço de endereços IP utilizado.
+          </p>
+          <span class="detail">10.0.0.0/16</span>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">02</span>
+          <h3>Sub-redes e rotas</h3>
+          <p>
+            Divisão da rede em sub-redes públicas e privadas,
+            com tabelas de rotas para direcionar o tráfego.
+          </p>
+          <span class="detail">4 sub-redes</span>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">03</span>
+          <h3>Internet Gateway</h3>
+          <p>
+            Componente que permite a comunicação entre a VPC
+            e a internet, conforme as rotas e regras configuradas.
+          </p>
+          <span class="detail">Conectividade externa</span>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">04</span>
+          <h3>NAT Gateway</h3>
+          <p>
+            Permite que recursos em sub-redes privadas iniciem
+            conexões com a internet sem receber conexões
+            diretamente da internet por esse caminho.
+          </p>
+          <span class="detail">Saída para a internet</span>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">05</span>
+          <h3>Security Group</h3>
+          <p>
+            Controla o tráfego permitido para a instância.
+            Neste laboratório, foi configurada uma regra
+            para acesso HTTP.
+          </p>
+          <span class="detail">TCP · Porta 80</span>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">06</span>
+          <h3>Amazon EC2</h3>
+          <p>
+            Instância virtual utilizada para hospedar a aplicação
+            e disponibilizá-la pelo endereço público.
+          </p>
+          <span class="detail">Web Server 1 · t3.micro</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-number">03</span>
+        <div>
+          <h2>Configuração do servidor</h2>
+          <p>Inicialização automatizada com User Data</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p>
+          Na criação da instância EC2, foi utilizado um script
+          de User Data para preparar o ambiente automaticamente.
+        </p>
+
+        <ul class="steps">
+          <li>Atualização dos pacotes do sistema.</li>
+          <li>Instalação do Apache, PHP e unzip.</li>
+          <li>Download e extração dos arquivos da aplicação do laboratório.</li>
+          <li>Ajuste das permissões dos arquivos do site.</li>
+          <li>Habilitação e inicialização do serviço Apache.</li>
+        </ul>
+
+        <p class="note">
+          O User Data executa comandos de inicialização na instância,
+          reduzindo a necessidade de configuração manual do servidor.
+        </p>
+      </div>
+    </section>
+
+    <section class="section result-section">
+      <div class="section-heading">
+        <span class="section-number">04</span>
+        <div>
+          <h2>Resultado do laboratório</h2>
+          <p>Validação do acesso à aplicação</p>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-status">
+          <span class="status-dot"></span>
+          Teste de acesso concluído
+        </div>
+
+        <h3>Servidor web funcionando</h3>
+        <p>
+          A instância EC2 foi iniciada, os testes de status foram
+          aprovados e a aplicação do laboratório foi aberta com
+          sucesso no navegador por meio do DNS público da instância.
+        </p>
+
+        <p class="note">
+          A imagem abaixo é um registro do resultado obtido durante
+          a atividade prática.
+        </p>
+
+        <img
+          class="result-image"
+          src="../screenshots/1.web_server_running.png"
+          alt="Captura de tela da aplicação web funcionando no navegador"
+          loading="lazy"
+        >
+
+        <p class="image-caption">
+          Registro do servidor web acessível pelo navegador.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-number">05</span>
+        <div>
+          <h2>O que aprendi</h2>
+          <p>Conceitos praticados na atividade</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <ul class="learning-list">
+          <li>Organização de uma rede virtual utilizando Amazon VPC.</li>
+          <li>Diferenças entre sub-redes públicas e privadas.</li>
+          <li>Uso de tabelas de rotas, Internet Gateway e NAT Gateway.</li>
+          <li>Controle de acesso à instância por meio de Security Groups.</li>
+          <li>Inicialização de um servidor web com User Data.</li>
+          <li>Verificação do funcionamento de uma aplicação hospedada em EC2.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>Bruno Carvalho</strong></p>
+      <p>AWS Cloud Foundations · Laboratório 267</p>
+      <p class="footer-note">
+        Projeto de aprendizagem prática em computação em nuvem.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
