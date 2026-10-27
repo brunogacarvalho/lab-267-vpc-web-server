@@ -77,4 +77,9 @@ A aplicação web foi aberta com sucesso no navegador usando o DNS público da i
 - Apache HTTP Server
 - GitHub Pages
 
+
+## Revisão interativa
+
+A página do laboratório também conta com **flashcards interativos** para revisar os principais conceitos e atividades praticadas, incluindo criação da VPC, subnets públicas e privadas, tabelas de rotas, Security Groups e configuração de uma instância EC2 para executar um servidor web. Cada cartão apresenta uma pergunta, permite revelar a resposta e navegar entre os cartões para revisar o conteúdo do laboratório.
+
 Página: https://brunogacarvalho.github.io/lab-267-vpc-web-server/
