@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="description" content="Documentação prática do Lab 267 da AWS: criação de uma VPC e configuração de um servidor web com EC2.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Lab 267 | AWS Cloud Foundations</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -220,6 +221,108 @@
 
   </main>
 
+  <section class="section flashcards-section">
+  <h2>Flashcards — Revise o que aprendeu</h2>
+  <p>Teste seus conhecimentos sobre a criação da VPC e a configuração do servidor web.</p>
+
+  <div class="flashcard" id="flashcard">
+    <span class="flashcard-counter" id="card-counter">1 de 8</span>
+    <span class="flashcard-label">PERGUNTA</span>
+    <h3 id="card-question">Qual é a função de uma VPC?</h3>
+
+    <div class="flashcard-answer" id="card-answer" hidden>
+      <span class="flashcard-label">RESPOSTA</span>
+      <p id="card-answer-text"></p>
+    </div>
+
+    <button type="button" class="reveal-button" id="reveal-answer">Revelar resposta</button>
+  </div>
+
+  <div class="flashcard-navigation">
+    <button type="button" id="previous-card" aria-label="Cartão anterior">← Anterior</button>
+    <button type="button" id="next-card" aria-label="Próximo cartão">Próximo →</button>
+  </div>
+</section>
+
+<script>
+const flashcards = [
+  {
+    question: "Qual é a função de uma VPC?",
+    answer: "Criar uma rede virtual na AWS para organizar os recursos."
+  },
+  {
+    question: "Qual é a diferença entre subnet pública e privada?",
+    answer: "A pública possui rota para um Internet Gateway; a privada não possui essa rota."
+  },
+  {
+    question: "O que é uma Availability Zone?",
+    answer: "Uma zona de disponibilidade da AWS na qual uma subnet pode estar localizada."
+  },
+  {
+    question: "Para que serve uma route table?",
+    answer: "Definir para onde o tráfego de rede deve ser encaminhado."
+  },
+  {
+    question: "Qual é a função do Web Security Group?",
+    answer: "Controlar o tráfego permitido para a instância. Neste laboratório, foi liberado o acesso HTTP."
+  },
+  {
+    question: "Em qual subnet foi lançada a instância Web Server 1?",
+    answer: "Na Public Subnet 2, com atribuição automática de IP público habilitada."
+  },
+  {
+    question: "O que o script User data configurou?",
+    answer: "Instalou Apache, PHP e unzip, baixou os arquivos do site e iniciou o Apache."
+  },
+  {
+    question: "Como foi verificado se o servidor web estava funcionando?",
+    answer: "Aguardando 2/2 verificações de status e acessando o DNS IPv4 público no navegador."
+  }
+];
+
+let currentCard = 0;
+
+const questionElement = document.getElementById("card-question");
+const answerElement = document.getElementById("card-answer");
+const answerTextElement = document.getElementById("card-answer-text");
+const counterElement = document.getElementById("card-counter");
+const revealButton = document.getElementById("reveal-answer");
+const previousButton = document.getElementById("previous-card");
+const nextButton = document.getElementById("next-card");
+
+function showCard() {
+  const card = flashcards[currentCard];
+  questionElement.textContent = card.question;
+  answerTextElement.textContent = card.answer;
+  counterElement.textContent = `${currentCard + 1} de ${flashcards.length}`;
+  answerElement.hidden = true;
+  revealButton.hidden = false;
+  previousButton.disabled = currentCard === 0;
+  nextButton.disabled = currentCard === flashcards.length - 1;
+}
+
+revealButton.addEventListener("click", () => {
+  answerElement.hidden = false;
+  revealButton.hidden = true;
+});
+
+previousButton.addEventListener("click", () => {
+  if (currentCard > 0) {
+    currentCard--;
+    showCard();
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  if (currentCard < flashcards.length - 1) {
+    currentCard++;
+    showCard();
+  }
+});
+
+showCard();
+</script>
+
   <footer class="footer">
     <div class="container">
       <p><strong>Bruno Carvalho</strong></p>
@@ -229,6 +332,6 @@
       </p>
     </div>
   </footer>
-
+  
 </body>
 </html>

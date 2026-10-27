@@ -329,3 +329,97 @@ h1 {
     height: 38px;
   }
 }
+
+/* Flashcards */
+.flashcards-section {
+  text-align: center;
+}
+
+.flashcards-section > p {
+  text-align: center;
+}
+
+.flashcard {
+  max-width: 720px;
+  margin: 28px auto 18px;
+  padding: 32px;
+  min-height: 240px;
+  background: var(--surface, #111e30);
+  border: 1px solid rgba(56, 189, 248, .3);
+  border-radius: 18px;
+  text-align: left;
+}
+
+.flashcard-counter {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--accent, #38bdf8);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.flashcard-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent, #38bdf8);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.flashcard h3 {
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.flashcard-answer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(148, 163, 184, .2);
+}
+
+.flashcard-answer p {
+  line-height: 1.7;
+}
+
+.reveal-button,
+.flashcard-navigation button {
+  padding: 11px 18px;
+  border: 1px solid var(--accent, #38bdf8);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text, #e2e8f0);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reveal-button {
+  margin-top: 12px;
+}
+
+.reveal-button:hover,
+.flashcard-navigation button:not(:disabled):hover {
+  background: rgba(56, 189, 248, .12);
+}
+
+.flashcard-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.flashcard-navigation button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .flashcard {
+    padding: 22px;
+  }
+
+  .flashcard-navigation {
+    gap: 10px;
+  }
+}
